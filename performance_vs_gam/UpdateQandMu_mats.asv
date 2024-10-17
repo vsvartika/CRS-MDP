@@ -1,28 +1,21 @@
-%% Compute Q-factors and theta-factors for a given policy D_mat
-%
-%----------Description-----------------------------------------------------
-% theta factors are represented using mu
-%
-% Variable          Size        Description
-% mu_r
 
+ % learning Q and mu factors at higher rate
+    %updating mu factors
+    for t=2:T-1
+        for s=1:N_s
+            tmp_r=0;
+            tmp_c=0; 
+            for st = 1:N_s
+                for a=1:N_s-st+1  % Only actions limited.. Ex: When s = 6, only action 0 is allowed.
+                    tmp_r = tmp_r + mu_r(t-1,st)*D_mat(st,a,t-1)*P(st,a,s)*exp(gamma*(beta^(t-1)*rewards(st,a)));                   
+                    tmp_c = tmp_c + mu_c(t-1,st)*D_mat(st,a,t-1)*P(st,a,s)*exp(gamma*(beta^(t-1)*cost(st,a)));
+                end 
+            end
+            mu_r(t,s) =  (1-eps_q_factors)* mu_r(t,s)+  eps_q_factors* tmp_r;
+            mu_c(t,s) =  (1-eps_q_factors)* mu_c(t,s)+ eps_q_factors* tmp_c;
 
-%updating mu factors
-for t=2:T-1
-    for s=1:N_s
-        tmp_r=0;
-        tmp_c=0; 
-        for st = 1:N_s
-            for a=1:N_s-st+1  % Only actions limited.. Ex: When s = 6, only action 0 is allowed.
-                tmp_r = tmp_r + mu_r(t-1,st)*D_mat(st,a,t-1)*P(st,a,s)*exp(gamma*(beta^(t-1)*rewards(st,a)));                   
-                tmp_c = tmp_c + mu_c(t-1,st)*D_mat(st,a,t-1)*P(st,a,s)*exp(gamma*(beta^(t-1)*cost(st,a)));
-            end 
         end
-        mu_r(t,s) =  (1-eps_q_factors)* mu_r(t,s)+  eps_q_factors* tmp_r;
-        mu_c(t,s) =  (1-eps_q_factors)* mu_c(t,s)+ eps_q_factors* tmp_c;
-
     end
-end
 
 
     

@@ -41,8 +41,8 @@
 %  Q_r                  N_sxN_axT           Q-factors for reward -- risk-senitive
 %  Q_c                  N_sxN_axT           Q-factors for cost -- risk-senitive
 %  mu_r                 TxN_s               theta factors for reward
-%  mu_c                 TxN_s               theta factors for cost
-%   
+%  mu_c                 TxN_s
+%
 %---------OUTPUTS----------------------------------------------------------
 % Variable              Size                Description
 %   rew_obt             1xsz_x_array        Array of optimal rewards for all values of gamma
@@ -160,7 +160,6 @@ cur_step = cur_step +1;
 
 end
 
-%% Plotting
 figure(1)
 plot(x_arr,rew_obt,'b*--','LineWidth',1)
 hold on
