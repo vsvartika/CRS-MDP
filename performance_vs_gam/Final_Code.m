@@ -171,10 +171,6 @@ legend('Optimal Reward','Optimal Cost')
 hold off
 
 
-
-
-
-
 %% Local Functions
 
 function  [rew_lin, cost_lin, rew_exp, cost_exp] = ComputeExpectedUtil (DD_mat, QQ_rl, QQ_cl, QQ_r, QQ_c, aa_init)
