@@ -84,8 +84,16 @@ for x = 0:Maxinv
 end
 
 
+for i = 1:N_s
+    for a = 1:N_a
+        sm = sum (P(i,a,:));
+        if sm > 0
+            P(i,a, :) = P(i, a, :) / sm;
+        end
+    end
+end
 
   
-    P
-    rewards = -rewards 
-    cost  = Cost_risk_factor_extra *cost 
+P
+rewards = -rewards 
+cost    = (gam_c/gamma)*cost 

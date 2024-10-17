@@ -1,4 +1,3 @@
-
 %initialization
 Q_r =rand(N_s,N_a,T);
 Q_c= rand(N_s,N_a,T);
