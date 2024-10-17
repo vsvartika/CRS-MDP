@@ -288,11 +288,11 @@ cur_step = cur_step +1;
 end
 
 figure(1)
-plot(2:fin_T,rew_obt)
+plot(2:6:fin_T,rew_obt)
 hold on
-plot(2:fin_T,cost_obt)
+plot(2:6:fin_T,cost_obt)
 hold on
-plot(2:fin_T,B_arr)
+plot(2:6:fin_T,B_arr)
 hold off
 
 
